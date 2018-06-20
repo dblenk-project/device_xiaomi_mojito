@@ -8,6 +8,8 @@ BOARD_VENDOR := xiaomi
 
 DEVICE_PATH := device/xiaomi/mojito
 
+BUILD_BROKEN_DUP_RULES := true
+
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
