@@ -7,3 +7,6 @@
 BOARD_VENDOR := xiaomi
 
 DEVICE_PATH := device/xiaomi/mojito
+
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
