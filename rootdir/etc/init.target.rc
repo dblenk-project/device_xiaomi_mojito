@@ -125,6 +125,8 @@ on property:sys.boot_completed=1
     setprop sys.usb.configfs 1
 
     # Enable ZRAM on boot_complete
+on property:sys.boot_completed=1
+    rm /data/unencrypted/zram_swap
     swapon_all /vendor/etc/fstab.qcom
 
 service vendor.pd_mapper /vendor/bin/pd-mapper
