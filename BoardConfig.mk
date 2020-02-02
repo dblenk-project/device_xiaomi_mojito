@@ -138,6 +138,7 @@ TARGET_KERNEL_SOURCE := kernel/xiaomi/mojito
 
 # Media
 TARGET_USES_ION := true
+TARGET_DISABLED_UBWC := true
 
 # Partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm system system_ext vendor product
