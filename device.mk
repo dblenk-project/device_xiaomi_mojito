@@ -256,6 +256,10 @@ PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor
 
+# Recovery
+PRODUCT_PACKAGES += \
+    init.recovery.qcom.rc
+
 # RIL
 PRODUCT_PACKAGES += \
     libjson \
