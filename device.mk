@@ -476,6 +476,7 @@ PRODUCT_COPY_FILES += \
 
 # VNDK
 PRODUCT_PACKAGES += \
+    com.android.vndk.current.on_vendor \
     vndk_package
 
 PRODUCT_COPY_FILES += \
