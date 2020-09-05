@@ -76,6 +76,9 @@ void vendor_load_properties()
         property_override(string("ro.") + prop + string("build.product"), device);
     }
 
+    // Set hardware revision
+    property_override("ro.boot.hardware.revision", GetProperty("ro.boot.hwversion", "").c_str());
+
     // Set hardware SKU prop
     property_override("ro.boot.product.hardware.sku", device);
 
