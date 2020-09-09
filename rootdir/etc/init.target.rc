@@ -120,6 +120,9 @@ on property:sys.boot_completed=1
     setprop vendor.usb.qdss.inst.name "qdss"
     setprop sys.usb.configfs 1
 
+    # Enable ZRAM on boot_complete
+    swapon_all /vendor/etc/fstab.qcom
+
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
     user system
