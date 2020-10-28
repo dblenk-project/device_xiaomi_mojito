@@ -246,3 +246,6 @@ ro.surface_flinger.set_touch_timer_ms=750
 # SoC
 ro.soc.manufacturer=Qualcomm
 ro.soc.model=SM6150
+
+# Zygote
+zygote.critical_window.minute=10
