@@ -151,6 +151,9 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.allocator@1.0.vendor \
     vendor.qti.hardware.display.mapperextensions@1.1.vendor
 
+PRODUCT_PACKAGES += \
+    disable_configstore
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml
 
