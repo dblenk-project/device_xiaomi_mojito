@@ -148,5 +148,8 @@ TARGET_SCREEN_DENSITY := 440
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 
+# Treble
+BOARD_VNDK_VERSION := current
+
 # Inherit from proprietary files
 include vendor/xiaomi/mojito/BoardConfigVendor.mk
