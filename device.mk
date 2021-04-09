@@ -256,6 +256,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom_ramdisk \
+    fstab.zram \
     init.device.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
