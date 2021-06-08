@@ -352,6 +352,7 @@ PRODUCT_PACKAGES += \
     DialerMojito \
     FrameworksMojito \
     SettingsMojito \
+    SettingsProviderMojito \
     SystemUIMojito \
     TelephonyMojito \
     WifiOverlay

@@ -1,0 +1,6 @@
+runtime_resource_overlay {
+    name: "SettingsProviderMojito",
+    theme: "SettingsProviderMojito",
+    sdk_version: "current",
+    vendor: true,
+}
