@@ -347,6 +347,7 @@ PRODUCT_PACKAGES += \
     CarrierConfigMojito \
     FrameworksMojito \
     SettingsMojito \
+    SettingsProviderMojito \
     SystemUIMojito \
     TelephonyMojito \
     WifiMojito
