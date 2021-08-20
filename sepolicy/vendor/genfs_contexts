@@ -80,3 +80,6 @@ genfscon sysfs /devices/virtual/misc/msm_multi_aac/power/wakeup                 
 genfscon sysfs /devices/virtual/misc/msm_qcelp/power/wakeup                                                                                                      u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_wma/power/wakeup                                                                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_wmapro/power/wakeup                                                                                                     u:object_r:sysfs_wakeup:s0
+
+# Vibrator
+genfscon sysfs /devices/platform/soc/soc:pwm_vibrator/leds/vibrator                  u:object_r:sysfs_leds:s0
