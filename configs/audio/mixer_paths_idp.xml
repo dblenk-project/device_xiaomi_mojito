@@ -3028,6 +3028,10 @@
         <path name="amic2" />
     </path>
 
+    <path name="voice-headset">
+        <path name="headphones" />
+    </path>
+
     <path name="speaker-and-headphones">
 	    <ctl name="RX_CDC_DMA_RX_0 Channels" value="Two" />
 	    <ctl name="RX_MACRO RX0 MUX" value="AIF1_PB" />
