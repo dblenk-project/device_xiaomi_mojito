@@ -216,8 +216,7 @@ PRODUCT_PACKAGES += \
 
 # Fstab
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
@@ -258,15 +257,18 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/input/idc/uinput-goodix.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/uinput-goodix.idc
 
 # Init scripts
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.qcom.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.usb.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.target.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.target.rc
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    init.recovery.qcom.rc \
+    init.target.rc \
+    ueventd.qcom.rc
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/bin/init.qcom.post_boot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.post_boot.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.qcom.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.qcom.usb.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.usb.sh
+PRODUCT_PACKAGES += \
+    init.qcom.post_boot.sh \
+    init.qcom.sh \
+    init.qcom.usb.sh
 
 # Keymaster
 PRODUCT_PACKAGES += \
@@ -379,10 +381,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml \
     $(LOCAL_PATH)/configs/permissions/system_ext-privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml
 
-# Recovery
-PRODUCT_PACKAGES += \
-    init.recovery.qcom.rc
-
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
     RemovePkgs
@@ -452,10 +450,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
-
-# Uevent
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
 
 # USB
 PRODUCT_PACKAGES += \
