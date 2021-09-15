@@ -266,7 +266,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     init.qcom.sh \
-    init.qcom.usb.sh
+    init.qcom.usb.sh \
+    init.qti.early_init.sh
 
 # Kernel
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true

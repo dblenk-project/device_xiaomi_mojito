@@ -27,6 +27,10 @@
 #
 #
 
+on early-init
+    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.qti.early_init.sh
+    setprop ro.soc.model ${ro.vendor.qti.soc_model}
+
 on init
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
     wait /dev/block/platform/soc/${ro.boot.bootdevice}

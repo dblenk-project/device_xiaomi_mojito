@@ -46,6 +46,12 @@ sh_binary {
     vendor: true,
 }
 
+sh_binary {
+    name: "init.qti.early_init.sh",
+    src: "init.qti.early_init.sh",
+    vendor: true,
+}
+
 // Init configuration files
 prebuilt_etc {
     name: "init.device.rc",
