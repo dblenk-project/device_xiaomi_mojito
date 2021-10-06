@@ -241,6 +241,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/bin/init.qcom.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.sh \
     $(LOCAL_PATH)/rootdir/bin/init.qcom.usb.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.usb.sh
 
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@4.1.vendor
+
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.lights-service.mojito
@@ -329,6 +333,10 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    android.hardware.radio@1.5.vendor \
+    android.hardware.radio.config@1.3.vendor \
+    android.hardware.radio.deprecated@1.0.vendor \
+    android.hardware.secure_element@1.2.vendor \
     CarrierConfigOverlay \
     libjson \
     libril \
