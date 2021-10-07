@@ -158,6 +158,7 @@
         </interface>
         <fqname>@2.2::ISoundTriggerHw/default</fqname>
     </hal>
+<!-- Disable tether offload
     <hal format="hidl">
         <name>android.hardware.tetheroffload.config</name>
         <transport>hwbinder</transport>
@@ -168,6 +169,7 @@
         </interface>
         <fqname>@1.0::IOffloadConfig/default</fqname>
     </hal>
+    </hal> -->
     <hal format="hidl">
         <name>android.hardware.tetheroffload.control</name>
         <transport>hwbinder</transport>
