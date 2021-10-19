@@ -74,6 +74,9 @@ TARGET_PROVIDES_AUDIO_EXTNS := true
 # Audio Policy
 USE_CUSTOM_AUDIO_POLICY :=1
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := mojito,sunny
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
 
