@@ -132,6 +132,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fastbootd
 
+# HIDL
+PRODUCT_PACKAGES += \
+    libhwbinder.vendor
+
 # Media
 PRODUCT_PACKAGES += \
     libavservices_minijail \
