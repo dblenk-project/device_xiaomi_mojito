@@ -229,6 +229,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/bin/init.qcom.post_boot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.post_boot.sh \
     $(LOCAL_PATH)/rootdir/bin/init.qcom.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.sh
 
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.lights-service.mojito
+
 # Media
 PRODUCT_PACKAGES += \
     libavservices_minijail \
