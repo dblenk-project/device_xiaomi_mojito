@@ -148,16 +148,6 @@
         </interface>
         <fqname>@1.1::IRadioConfig/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>android.hardware.soundtrigger</name>
-        <transport>hwbinder</transport>
-        <version>2.2</version>
-        <interface>
-            <name>ISoundTriggerHw</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@2.2::ISoundTriggerHw/default</fqname>
-    </hal>
 <!-- Disable tether offload
     <hal format="hidl">
         <name>android.hardware.tetheroffload.config</name>
