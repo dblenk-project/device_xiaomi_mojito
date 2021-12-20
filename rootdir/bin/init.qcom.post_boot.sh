@@ -138,8 +138,6 @@ case "$soc_id" in
 
     echo "0:1516800" > /sys/module/cpu_boost/parameters/input_boost_freq
     echo 120 > /sys/module/cpu_boost/parameters/input_boost_ms
-    echo "0:0 1:0 2:0 3:0 4:1708800 5:0 6:0 7:2208000" >  /sys/module/cpu_boost/parameters/powerkey_input_boost_freq
-    echo 400 >  /sys/module/cpu_boost/parameters/powerkey_input_boost_ms
 
     # Set Memory parameters
     configure_memory_parameters
