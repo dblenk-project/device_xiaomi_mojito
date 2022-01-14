@@ -61,6 +61,9 @@
     <!-- Indicate the driver support NL80211_REG_CHANGED event. -->
     <bool translatable="false" name="config_wifiDriverSupportedNl80211RegChangedEvent">true</bool>
 
+    <!-- Indicate the device support request channel on Wi-Fi Aware data-path. -->
+    <bool translatable="false" name="config_wifiSupportChannelOnDataPath">true</bool>
+
     <!-- Do not translate. Default access point SSID used for tethering -->
     <string name="wifi_tether_configure_ssid_default" translatable="false">Redmi Note 10</string>
 </resources>
