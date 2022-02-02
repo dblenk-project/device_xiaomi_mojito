@@ -27,4 +27,6 @@
   <!-- Whether this device is supporting the camera toggle -->
   <bool name="config_supportsCamToggle">true</bool>
 
+    <!-- Whether to show the Preference for Adaptive connectivity -->
+    <bool name="config_show_adaptive_connectivity">false</bool>
 </resources>
