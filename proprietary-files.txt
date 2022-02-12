@@ -1261,8 +1261,8 @@ vendor/lib64/libhbtpclient.so
 vendor/lib64/libhbtpdsp.so
 vendor/lib64/libhbtpfrmwk.so
 
-# Touch Firmware
-vendor/firmware/focaltech_ts_fw_samsung.bin
+# Touch Firmware - from mojito-user 11 RKQ1.201022.002 V12.0.5.0.RKGMIXM release-keys
+vendor/firmware/focaltech_ts_fw_samsung.bin|0670d28136bf8616fb0ff1d4ae26c60118756c05
 
 # WiFi
 vendor/bin/cnss-daemon
