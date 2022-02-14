@@ -4,8 +4,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-BOARD_VENDOR := xiaomi
-
 DEVICE_PATH := device/xiaomi/mojito
 
 BUILD_BROKEN_DUP_RULES := true
