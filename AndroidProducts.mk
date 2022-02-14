@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/awaken_mojito.mk
+    $(LOCAL_DIR)/komodo_mojito.mk
 
 COMMON_LUNCH_CHOICES := \
-    awaken_mojito-user \
-    awaken_mojito-userdebug \
-    awaken_mojito-eng
+    komodo_mojito-user \
+    komodo_mojito-userdebug \
+    komodo_mojito-eng

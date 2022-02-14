@@ -11,16 +11,23 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from mojito device
 $(call inherit-product, device/xiaomi/mojito/device.mk)
 
-# Inherit some common Awaken stuff.
-$(call inherit-product, vendor/awaken/config/common_full_phone.mk)
+# Inherit some common Komodo OS stuff.
+$(call inherit-product, vendor/komodo/config/common.mk)
 
-# Boot Animation Resolution
-TARGET_BOOT_ANIMATION_RES := 1080
-
-PRODUCT_NAME := awaken_mojito
+# Product Specifics
+PRODUCT_NAME := komodo_mojito
 PRODUCT_DEVICE := mojito
 PRODUCT_BRAND := Redmi
 PRODUCT_MODEL := Redmi Note 10
 PRODUCT_MANUFACTURER := Xiaomi
+
+# Some Build Flags
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_FACE_UNLOCK := true
+TARGET_USES_BLUR := true
+TARGET_USES_AOSP_CHARGER := true
+TARGET_SUPPORTS_GOOGLE_RECORDER := true
+TARGET_INCLUDE_LIVE_WALLPAPERS := false
+TARGET_INCLUDE_STOCK_ARCORE := false
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
