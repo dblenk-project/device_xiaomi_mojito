@@ -343,6 +343,8 @@ vendor/lib64/libtriplecam_optical_zoom_control.so
 vendor/lib64/libtriplecam_video_optical_zoom.so
 vendor/lib64/libvideofilter_only.so
 vendor/lib64/libvidhance.so
+vendor/lib64/libwa_dof.so
+vendor/lib64/libwa_refocus.so
 vendor/lib64/libwa_rtdof.so
 vendor/lib64/libxmi_high_dynamic_range.so
 
