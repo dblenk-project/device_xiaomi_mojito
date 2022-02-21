@@ -177,7 +177,7 @@
     <ctl name="Ultrasound Enable" value="Off" />
     <ctl name="Ultrasound RampDown" value="Off"/>
     <ctl name="Ultrasound Event" value="0"/>
-    <ctl name="Ultrasound Mode" value="900"/>
+    <ctl name="Ultrasound Mode" value="903"/>
     <ctl name="Ultrasound Rx Port" value="Off"/>
     <ctl name="Ultrasound Microphone Index" value="0"/>
     <ctl name="Ultrasound Debug Mode" value="0" />
@@ -419,7 +419,7 @@
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="ultrasound-proximity">
         <ctl name="Ultrasound Enable" value="On" />
-        <ctl name="Ultrasound Mode" value="900" />
+        <ctl name="Ultrasound Mode" value="903" />
         <ctl name="Ultrasound Debug Mode" value="0" />
         <ctl name="Ultrasound Log Level" value="0" />
     </path>
@@ -429,7 +429,7 @@
     </path>
 
     <path name="ultrasound-handset-mode">
-        <ctl name="Ultrasound Mode" value="900" />
+        <ctl name="Ultrasound Mode" value="903" />
     </path>
 
     <path name="ultrasound-proximity-output">
