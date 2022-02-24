@@ -21,12 +21,12 @@ limitations under the License.
 
 <MediaCodecs>
     <Encoders>
-        <MediaCodec name="OMX.qcom.video.encoder.avc" type="video/avc" update="true">
+        <!-- <MediaCodec name="OMX.qcom.video.encoder.avc" type="video/avc" update="true">
             <Limit name="measured-frame-rate-320x240" range="238-238" />
             <Limit name="measured-frame-rate-720x480" range="123-123" />
             <Limit name="measured-frame-rate-1280x720" range="50-50" />
             <Limit name="measured-frame-rate-1920x1080" range="16-40" />
-        </MediaCodec>
+        </MediaCodec> -->
         <MediaCodec name="OMX.qcom.video.encoder.hevc" type="video/hevc" update="true">
             <Limit name="measured-frame-rate-320x240" range="226-226" />
             <Limit name="measured-frame-rate-720x480" range="121-121" />
@@ -98,12 +98,12 @@ limitations under the License.
         </MediaCodec>
     </Encoders>
     <Decoders>
-        <MediaCodec name="OMX.qcom.video.decoder.avc" type="video/avc" update="true">
+        <!-- <MediaCodec name="OMX.qcom.video.decoder.avc" type="video/avc" update="true">
             <Limit name="measured-frame-rate-320x240" range="297-362" />
             <Limit name="measured-frame-rate-720x480" range="280-350" />
             <Limit name="measured-frame-rate-1280x720" range="176-260" />
             <Limit name="measured-frame-rate-1920x1088" range="91-147" />
-        </MediaCodec>
+        </MediaCodec> -->
             <MediaCodec name="OMX.qcom.video.decoder.hevc" type="video/hevc" update="true">
             <Limit name="measured-frame-rate-352x288" range="309-377" />
             <Limit name="measured-frame-rate-720x480" range="294-367" />
