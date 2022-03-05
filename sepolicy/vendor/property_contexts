@@ -4,6 +4,13 @@ persist.vendor.camera                           u:object_r:vendor_camera_prop:s0
 vendor.camera.                                  u:object_r:vendor_camera_prop:s0
 ro.vendor.camera.                               u:object_r:vendor_camera_prop:s0
 
+# Camera Sensors
+camera.sensor.rearMain.fuseID                   u:object_r:vendor_camera_prop:s0
+camera.sensor.frontAux.fuseID                   u:object_r:vendor_camera_prop:s0
+camera.sensor.frontMain.fuseID                  u:object_r:vendor_camera_prop:s0
+camera.sensor.rearUltra.fuseID                  u:object_r:vendor_camera_prop:s0
+camera.sensor.rearTele.fuseID                   u:object_r:vendor_camera_prop:s0
+
 # DFPS
 persist.vendor.dfps.level                       u:object_r:vendor_display_prop:s0
 persist.vendor.video.dfps.level                 u:object_r:vendor_display_prop:s0
