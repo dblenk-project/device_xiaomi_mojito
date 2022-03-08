@@ -173,6 +173,8 @@ firmware_directories /vendor/firmware_mnt/image/
 
 #qvr
 /dev/qvr_external_sensor_ioctl      0660  system  system
+/dev/bus/usb/*            0660   root       usb
+/dev/hidraw*              0660   root       usb
 
 # wlan
 /dev/wcnss_wlan           0660   system     system
