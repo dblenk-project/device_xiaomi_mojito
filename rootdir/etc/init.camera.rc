@@ -1,0 +1,96 @@
+# Copyright (c) 2013-2018,2020, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
+
+on fs
+    chmod 0755 /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
+    chown system system /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
+    chmod 0755 /mnt/vendor/persist/camera/rear_dc_cal_wu.bin
+    chown system system /mnt/vendor/persist/camera/rear_dc_cal_wu.bin
+
+on boot
+    on property:sys.boot_completed=1
+    mkdir /data/vendor/camera/K7A 0777 system system
+    mkdir /data/vendor/camera/model 0777 cameraserver audio
+    mkdir /data/vendor/camera/model/rt_model 0777 cameraserver audio
+    mkdir /data/vendor/camera/model/dof_model 0777 cameraserver audio
+
+    copy /vendor/etc/camera/model/rt_model/preview_cache /data/vendor/camera/model/rt_model/preview_cache
+    chown cameraserver audio  /data/vendor/camera/model/rt_model/preview_cache
+    chmod 0777 /data/vendor/camera/model/rt_model/preview_cache
+
+    copy /vendor/etc/camera/model/rt_model/preview_policy /data/vendor/camera/model/rt_model/preview_policy
+    chown cameraserver audio  /data/vendor/camera/model/rt_model/preview_policy
+    chmod 0777 /data/vendor/camera/model/rt_model/preview_policy
+
+    copy /vendor/etc/camera/model/rt_model/preview_model /data/vendor/camera/model/rt_model/preview_model
+    chown cameraserver audio  /data/vendor/camera/model/rt_model/preview_model
+    chmod 0777 /data/vendor/camera/model/rt_model/preview_model
+
+    copy /vendor/etc/camera/model/dof_model/capture_policy /data/vendor/camera/model/dof_model/capture_policy
+    chown cameraserver audio  /data/vendor/camera/model/dof_model/capture_policy
+    chmod 0777 /data/vendor/camera/model/dof_model/capture_policy
+
+    copy /vendor/etc/camera/model/dof_model/capture_cache /data/vendor/camera/model/dof_model/capture_cache
+    chown cameraserver audio  /data/vendor/camera/model/dof_model/capture_cache
+    chmod 0777 /data/vendor/camera/model/dof_model/capture_cache
+
+    copy /vendor/etc/camera/model/dof_model/capture_model /data/vendor/camera/model/dof_model/capture_model
+    chown cameraserver audio  /data/vendor/camera/model/dof_model/capture_model
+    chmod 0777 /data/vendor/camera/model/dof_model/capture_model
+
+on property:vendor.camera.watermark.en=1
+    chmod 666 /mnt/vendor/persist/camera/mojito_main_space_custom_watermark.png
+    chmod 666 /mnt/vendor/persist/camera/mojito_main_space_cinematic_ratio_custom_watermark.png
+    chmod 666 /mnt/vendor/persist/camera/sunny_main_space_custom_watermark.png
+    chmod 666 /mnt/vendor/persist/camera/sunny_main_space_cinematic_ratio_custom_watermark.png
+    chmod 666 /mnt/vendor/persist/camera/rainbow_main_space_custom_watermark.png
+    chmod 666 /mnt/vendor/persist/camera/rainbow_main_space_cinematic_ratio_custom_watermark.png
+    chmod 666 /mnt/vendor/persist/camera/secret_main_space_custom_watermark.png
+    chmod 666 /mnt/vendor/persist/camera/secret_main_space_cinematic_ratio_custom_watermark.png
+
+on  property:vendor.camera.boost.en=2
+    write /sys/class/thermal/thermal_message/sconfig 0
+on  property:vendor.camera.boost.en=1
+    write /sys/class/thermal/thermal_message/sconfig 12
+on  property:vendor.camera.boost.en=0
+    write /sys/class/thermal/thermal_message/sconfig 10
+
+    copy /vendor/etc/K7A/para_ini_cal_w_d_0.bin /data/vendor/camera/K7A/para_ini_cal_w_d_0.bin
+    chown system system  /data/vendor/camera/K7A/para_ini_cal_w_d_0.bin
+    chmod 0777 /data/vendor/camera/K7A/para_ini_cal_w_d_0.bin
+
+    copy /vendor/etc/K7A/para_ini_cal_w_uw_1.bin /data/vendor/camera/K7A/para_ini_cal_w_uw_1.bin
+    chown system system  /data/vendor/camera/K7A/para_ini_cal_w_uw_1.bin
+    chmod 0777 /data/vendor/camera/K7A/para_ini_cal_w_uw_1.bin
+
+on property:vendor.camera.bokeh.disable=1
+    setprop persist.vendor.camera.bokeh.disable 1
+
+on property:vendor.camera.bokeh.disable=0
+    setprop persist.vendor.camera.bokeh.disable 0
