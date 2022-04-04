@@ -16,6 +16,9 @@ pm.dexopt.bg-dexopt=speed-profile
 pm.dexopt.boot=verify
 pm.dexopt.first-boot=quicken
 
+# Disable remote keyguard animation
+persist.wm.enable_remote_keyguard_animation=0
+
 # Media
 media.aac_51_output_enabled=true
 media.stagefright.enable-aac=true
