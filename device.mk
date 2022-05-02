@@ -325,6 +325,11 @@ PRODUCT_COPY_FILES += \
     hardware/qcom-caf/sm8150/media/conf_files/sm6150/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     hardware/qcom-caf/sm8150/media/conf_files/sm6150/system_properties.xml:$(TARGET_COPY_OUT_VENDOR)/etc/system_properties.xml
 
+# Mlipay
+PRODUCT_PACKAGES += \
+    vendor.xiaomi.hardware.mlipay@1.0.vendor \
+    vendor.xiaomi.hardware.mlipay@1.1.vendor
+
 # Network
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.1.vendor
