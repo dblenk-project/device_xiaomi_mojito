@@ -125,9 +125,7 @@ debug.sf.early.app.duration=16500000
 debug.sf.earlyGl.sf.duration=13500000
 debug.sf.earlyGl.app.duration=21000000
 debug.sf.enable_egl_image_tracker=1
-debug.sf.enable_hwc_vds=0
 debug.sf.hw=0
-debug.sf.latch_unsignaled=0
 debug.sf.layer_caching_active_layer_timeout_ms=1000
 ro.surface_flinger.protected_contents=true
 ro.hardware.egl=adreno
@@ -159,9 +157,6 @@ vendor.display.idle_time=0
 vendor.display.idle_time_inactive=0
 vendor.display.svi.config=1
 vendor.display.svi.config_path=/vendor/etc/SVIConfig.xml
-
-# FRP
-ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
 # GPU
 ro.gfx.driver.1=com.qualcomm.qti.gpudrivers.sm6150.api30
@@ -204,7 +199,6 @@ persist.vendor.radio.report_codec=1
 persist.vendor.radio.snapshot_enabled=1
 persist.vendor.radio.snapshot_timer=5
 persist.vendor.radio.sib16_support=1
-rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
 ro.telephony.iwlan_operation_mode=legacy
 
 # USB

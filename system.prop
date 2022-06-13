@@ -19,6 +19,13 @@ pm.dexopt.first-boot=quicken
 # Disable remote keyguard animation
 persist.wm.enable_remote_keyguard_animation=0
 
+# Display
+debug.sf.enable_hwc_vds=1
+debug.sf.latch_unsignaled=1
+
+# FRP
+ro.frp.pst=/dev/block/bootdevice/by-name/frp
+
 # Media
 media.aac_51_output_enabled=true
 media.stagefright.enable-aac=true
@@ -48,6 +55,7 @@ persist.radio.VT_CAM_INTERFACE=1
 persist.radio.VT_HYBRID_ENABLE=1
 persist.sys.fflag.override.settings_provider_model=false
 ril.subscription.types=RUIM
+rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
 ro.telephony.default_cdma_sub=0
 ro.telephony.default_network=22,22
 telephony.lteOnCdmaDevice=1
