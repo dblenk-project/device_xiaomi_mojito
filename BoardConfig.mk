@@ -27,6 +27,9 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a76
 
+# Assert OTA
+TARGET_OTA_ASSERT_DEVICE := mojito|sunny
+
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
@@ -65,6 +68,9 @@ TARGET_PROVIDES_AUDIO_EXTNS := true
 
 # Audio Policy
 USE_CUSTOM_AUDIO_POLICY :=1
+
+# Board
+TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/configs/board-info.txt
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := sm6150
