@@ -60,8 +60,6 @@ genfscon sysfs /devices/platform/soc/soc:fpc1020/wakeup/wakeup5                 
 genfscon sysfs /devices/platform/soc/soc:gpio_keys/wakeup                                                                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:maxim_ds28e16/power_supply/batt_verify/wakeup                                                                           u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:maxim_ds28e16/power_supply/batt_verify/wakeup13                                                                         u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/soc:qcom,msm-audio-apr/soc:qcom,msm-audio-apr:qcom,q6core-audio/soc:qcom,msm-audio-apr:qcom,q6core-audio:bolero-cdc/tx-macro/tx_swr_ctrl/wakeup       u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/soc:qcom,msm-audio-apr/soc:qcom,msm-audio-apr:qcom,q6core-audio/soc:qcom,msm-audio-apr:qcom,q6core-audio:bolero-cdc/rx-macro/rx_swr_ctrl/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/diag/diag/wakeup                                                                                                                 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/fastrpc/adsprpc-smd/wakeup                                                                                                       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/fastrpc/adsprpc-smd-secure/wakeup                                                                                                u:object_r:sysfs_wakeup:s0
@@ -74,9 +72,7 @@ genfscon sysfs /devices/virtual/misc/msm_amrwb/power/wakeup                     
 genfscon sysfs /devices/virtual/misc/msm_ape/power/wakeup                                                                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_evrc/power/wakeup                                                                                                       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_g711alaw/power/wakeup                                                                                                   u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/misc/msm_g711mlaw/power/wakeup                                                                                                   u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_mp3/power/wakeup                                                                                                        u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/misc/msm_multi_aac/power/wakeup                                                                                                  u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_qcelp/power/wakeup                                                                                                      u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_wma/power/wakeup                                                                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_wmapro/power/wakeup                                                                                                     u:object_r:sysfs_wakeup:s0
