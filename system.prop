@@ -2,7 +2,8 @@
 vendor.bluetooth.soc=cherokee
 
 # Camera
-vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap
+persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap,com.xiaomi.cameratest
 
 # Charger
 ro.charger.enable_suspend=true
@@ -49,6 +50,7 @@ ro.vendor.perf.scroll_opt=true
 persist.rcs.supported=1
 
 # Radio
+persist.radio.apm_sim_not_pwdn=1
 persist.radio.multisim.config=dsds
 persist.radio.NO_STAPA=1
 persist.radio.VT_CAM_INTERFACE=1

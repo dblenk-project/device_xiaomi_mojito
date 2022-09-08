@@ -1,4 +1,4 @@
-# All unpinned blobs below are extracted from mojito 12 SKQ1.210908.001 V13.0.8.0.SKGMIXM release-keys
+# All unpinned blobs below are extracted from mojito 12 SKQ1.210908.001 V13.0.10.0.SKGMIXM release-keys
 
 # ADSP
 vendor/bin/adsprpcd
@@ -1021,6 +1021,7 @@ vendor/lib64/libqrtr.so
 vendor/lib64/libqsocket.so
 
 # RIL
+-system_ext/app/DeviceInfo/DeviceInfo.apk
 -system_ext/app/QtiTelephony/QtiTelephony.apk
 -system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
 system_ext/etc/permissions/extphonelib.xml

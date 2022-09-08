@@ -14,9 +14,11 @@ persist.vendor.audio.ras.enabled=false
 persist.vendor.audio.spv3.enable=true
 persist.vendor.audio.voicecall.speaker.stereo=true
 ro.af.client_heap_size_kbyte=7168
+ro.vendor.audio.afe.record=true
 ro.vendor.audio.soundfx.usb=true
 ro.vendor.audio.us.proximity=true
 ro.vendor.audio.sdk.fluencetype=none
+ro.vendor.audio.voice.volume.boost=manual
 vendor.audio.adm.buffering.ms=2
 vendor.audio.feature.a2dp_offload.enable=true
 vendor.audio.feature.afe_proxy.enable=true
@@ -97,6 +99,8 @@ vendor.qcom.bluetooth.soc=cherokee
 
 # Camera
 camera.disable_zsl_mode=1
+camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera
 
 # Crypto
 ro.crypto.volume.filenames_mode=aes-256-cts
@@ -152,11 +156,11 @@ vendor.display.disable_ui_3d_tonemap=1
 vendor.display.enable_default_color_mode=1
 vendor.display.enable_null_display=0
 vendor.display.enable_optimize_refresh=1
-vendor.gralloc.disable_ubwc=0
 vendor.display.idle_time=0
 vendor.display.idle_time_inactive=0
 vendor.display.svi.config=1
 vendor.display.svi.config_path=/vendor/etc/SVIConfig.xml
+vendor.gralloc.disable_ubwc=0
 
 # GPU
 ro.gfx.driver.1=com.qualcomm.qti.gpudrivers.sm6150.api30
