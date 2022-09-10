@@ -112,4 +112,12 @@ void vendor_load_properties()
     property_override("dalvik.vm.heaptargetutilization", heaptargetutilization);
     property_override("dalvik.vm.heapminfree", heapminfree);
     property_override("dalvik.vm.heapmaxfree", heapmaxfree);
+
+#ifdef __ANDROID_RECOVERY__
+    string buildtype = GetProperty("ro.build.type", "userdebug");
+    if (buildtype != "user") {
+        property_override("ro.debuggable", "1");
+        property_override("ro.adb.secure.recovery", "0");
+    }
+#endif
 }
