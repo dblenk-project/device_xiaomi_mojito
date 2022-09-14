@@ -41,9 +41,6 @@ mmp.enable.3g2=true
 persist.mm.enable.prefetch=true
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 
-# Pre-Rendering
-ro.vendor.perf.scroll_opt=true
-
 # RCS
 persist.rcs.supported=1
 
