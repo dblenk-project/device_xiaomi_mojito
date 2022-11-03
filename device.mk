@@ -366,6 +366,10 @@ PRODUCT_PACKAGES += \
     android.hardware.power-service-qti \
     android.hardware.power.stats@1.0-service.mock
 
+# Preopted ODEX files (system_other)
+PRODUCT_PACKAGES += \
+    cppreopts.sh
+
 # QTI
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
