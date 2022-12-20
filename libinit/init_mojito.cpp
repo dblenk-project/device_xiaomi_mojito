@@ -81,6 +81,9 @@ void vendor_load_properties()
     // Set hardware SKU prop
     property_override("ro.boot.product.hardware.sku", device);
 
+    // Set USB product prop
+    property_override("vendor.usb.product_string", model);
+
     // Set dalvik heap configuration
     string heapstartsize, heapgrowthlimit, heapsize, heapminfree,
 			heapmaxfree, heaptargetutilization;
