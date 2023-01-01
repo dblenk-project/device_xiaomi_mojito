@@ -704,4 +704,7 @@
          non-zero amplitudes, to bring the vibrator amplitude down to zero using this timing. -->
     <integer name="config_vibrationWaveformRampDownDuration">50</integer>
 
+    <!-- Whether or not to enable the lock screen entry point for the QR code scanner. -->
+    <bool name="config_enableQrCodeScannerOnLockScreen">true</bool>
+
 </resources>
