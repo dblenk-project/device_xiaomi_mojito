@@ -753,4 +753,7 @@
         <item>com.xiaomi.cameratest</item>
     </string-array>
 
+    <!-- Whether or not to enable the lock screen entry point for the QR code scanner. -->
+    <bool name="config_enableQrCodeScannerOnLockScreen">true</bool>
+
 </resources>
