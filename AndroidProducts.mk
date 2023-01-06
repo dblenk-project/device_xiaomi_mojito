@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/komodo_mojito.mk
+    $(LOCAL_DIR)/lineage_mojito.mk
 
 COMMON_LUNCH_CHOICES := \
-    komodo_mojito-user \
-    komodo_mojito-userdebug \
-    komodo_mojito-eng
+    lineage_mojito-user \
+    lineage_mojito-userdebug \
+    lineage_mojito-eng
