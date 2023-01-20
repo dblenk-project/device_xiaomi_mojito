@@ -183,6 +183,7 @@ vendor.gralloc.disable_ubwc=0
 persist.vendor.cp.taper_term_mv=6500
 persist.vendor.cp.fcc_main_ua=400000
 persist.vendor.cp.qc3p5_vfloat_offset_uv=110000
+persist.vendor.cp.vbus_offset_mv=1040
 
 # IMS
 persist.dbg.volte_avail_ovr=1
