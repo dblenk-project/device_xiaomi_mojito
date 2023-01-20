@@ -2,6 +2,8 @@
 vendor.bluetooth.soc=cherokee
 
 # Camera
+camera.disable_zsl_mode=1
+camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera
 persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera
 
 # Charger
