@@ -28,6 +28,10 @@ debug.sf.latch_unsignaled=1
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
+# LMK
+ro.lmk.psi_complete_stall_ms=70
+ro.lmk.swap_free_low_percentage=20
+
 # Media
 media.aac_51_output_enabled=true
 media.stagefright.enable-aac=true
