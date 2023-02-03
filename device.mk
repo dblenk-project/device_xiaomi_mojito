@@ -348,14 +348,14 @@ PRODUCT_ENFORCE_RRO_TARGETS += *
 
 PRODUCT_PACKAGES += \
     ApertureMojito \
-    CarrierConfigOverlay \
+    CarrierConfigMojito \
     DialerMojito \
     FrameworksMojito \
     SettingsMojito \
     SettingsProviderMojito \
     SystemUIMojito \
     TelephonyMojito \
-    WifiOverlay
+    WifiMojito
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
