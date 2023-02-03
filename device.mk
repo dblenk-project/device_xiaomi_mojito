@@ -125,9 +125,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libpiex_shim
 
-PRODUCT_PACKAGES += \
-    ApertureMojito
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/camxoverridesettings.txt:$(TARGET_COPY_OUT_VENDOR)/etc/camera/camxoverridesettings.txt
 
@@ -346,10 +343,13 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_ENFORCE_RRO_TARGETS += *
 PRODUCT_PACKAGES += \
+    ApertureMojito \
+    CarrierConfigOverlay \
     FrameworksMojito \
     SettingsMojito \
     SystemUIMojito \
-    TelephonyMojito
+    TelephonyMojito \
+    WifiOverlay
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -400,7 +400,6 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.3.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
     android.hardware.secure_element@1.2.vendor \
-    CarrierConfigOverlay \
     libjson \
     libril \
     librilutils \
@@ -518,7 +517,6 @@ PRODUCT_PACKAGES += \
     IPACM_cfg.xml \
     libwifi-hal-qcom \
     libwpa_client \
-    WifiOverlay \
     wpa_supplicant \
     wpa_supplicant.conf
 
