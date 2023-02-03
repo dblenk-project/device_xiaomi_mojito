@@ -29,3 +29,7 @@ PRODUCT_MODEL := Redmi Note 10
 PRODUCT_MANUFACTURER := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+# GMS
+TARGET_GAPPS_ARCH := arm64
+USE_GAPPS := true
