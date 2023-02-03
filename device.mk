@@ -344,12 +344,12 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_ENFORCE_RRO_TARGETS += *
 PRODUCT_PACKAGES += \
     ApertureMojito \
-    CarrierConfigOverlay \
+    CarrierConfigMojito \
     FrameworksMojito \
     SettingsMojito \
     SystemUIMojito \
     TelephonyMojito \
-    WifiOverlay
+    WifiMojito
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
