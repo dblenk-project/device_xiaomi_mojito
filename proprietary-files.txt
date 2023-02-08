@@ -1,4 +1,4 @@
-# All unpinned blobs below are extracted from miui_MOJITOGlobal_V13.0.11.0.SKGMIXM_7c6644824a_12.0
+# All unpinned blobs below are extracted from miui_MOJITOGlobal_V14.0.1.0.SKGMIXM_d9a5077bf4_12.0
 
 # ADSP
 vendor/bin/adsprpcd
@@ -303,6 +303,7 @@ vendor/lib64/libalCFR.so
 vendor/lib64/libalLDC.so
 vendor/lib64/libalhLDC.so
 vendor/lib64/libanc_dc_base.so
+vendor/lib64/libanc_dc_plugin_xiaomi_v2.so
 vendor/lib64/libarcsat.so
 vendor/lib64/libbeauty_face_interface.so
 vendor/lib64/libc++_shared.so
@@ -324,7 +325,9 @@ vendor/lib64/libdng_sdk2vendor.so
 vendor/lib64/libft2vendor.so
 vendor/lib64/libhvx_interface.so
 vendor/lib64/libmegface.so
+vendor/lib64/libmiStereoFactoryRemapBasicLib.so
 vendor/lib64/libmiStereoFactoryRemapLib.so
+vendor/lib64/libmiStereoFactoryRemapLib_v2.so
 vendor/lib64/libmiai_portraitsupernight.so
 vendor/lib64/libmiai_supernight.so
 vendor/lib64/libmialgo_basic.so
@@ -906,12 +909,14 @@ vendor/lib/libqcodec2.so
 vendor/lib/libswvdec.so
 vendor/lib/libvppclient.so
 vendor/lib/libvpphvx.so
+vendor/lib/libvppimmotion.so
 vendor/lib/libvpplibrary.so
 vendor/lib/vendor.qti.hardware.vpp@1.1.so
 vendor/lib/vendor.qti.hardware.vpp@1.2.so
 vendor/lib/vendor.qti.hardware.vpp@1.3.so
 vendor/lib64/libmmosal.so
 vendor/lib64/libvpphvx.so
+vendor/lib64/libvppimmotion.so
 vendor/lib64/libvpplibrary.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/lib64/vendor.qti.hardware.vpp@1.2.so
@@ -1098,6 +1103,11 @@ vendor/radio/qcril_database/upgrade/19_version_update_ecc_table.sql
 vendor/radio/qcril_database/upgrade/1_version_intro.sql
 vendor/radio/qcril_database/upgrade/2_version_add_wps_config.sql
 vendor/radio/qcril_database/upgrade/31_version_update_ecc_table.sql
+vendor/radio/qcril_database/upgrade/32_version_update_ecc_table.sql
+vendor/radio/qcril_database/upgrade/33_version_update_ecc_table.sql
+vendor/radio/qcril_database/upgrade/34_version_update_ecc_table.sql
+vendor/radio/qcril_database/upgrade/35_version_update_ecc_table.sql
+vendor/radio/qcril_database/upgrade/36_version_update_ecc_table.sql
 vendor/radio/qcril_database/upgrade/3_version_update_wps_config.sql
 vendor/radio/qcril_database/upgrade/4_version_update_ecc_table.sql
 vendor/radio/qcril_database/upgrade/5_version_update_ecc_table.sql
