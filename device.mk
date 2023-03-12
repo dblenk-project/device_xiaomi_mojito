@@ -197,6 +197,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fastbootd
 
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    ro.fastbootd.available=true
+
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.3-service.xiaomi
