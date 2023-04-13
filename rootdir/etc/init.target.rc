@@ -102,9 +102,9 @@ on boot
     chmod 0666 /dev/stune/background/cgroup.procs
     chmod 0666 /dev/stune/top-app/cgroup.procs
 
-    # Set xiaomi touch permissions
-    chown system system /dev/xiaomi-touch
-    chmod 0660 /dev/xiaomi-touch
+    # DT2W
+    chown system system /sys/touchpanel/double_tap
+    chmod 0660 /sys/touchpanel/double_tap
 
 on property:sys.boot_completed=1
     # Runtime fs tuning
