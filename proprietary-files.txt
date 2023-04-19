@@ -1322,15 +1322,6 @@ vendor/lib64/libhbtpfrmwk.so
 # Touch Firmware - from mojito-user 11 RKQ1.201022.002 V12.0.5.0.RKGMIXM release-keys
 vendor/firmware/focaltech_ts_fw_samsung.bin|0670d28136bf8616fb0ff1d4ae26c60118756c05
 
-# Trusted Execution Environment connector - From sweet 13 MIUI V14.0.1.0.TKFMIXM release-keys
-vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service|89a3b983d76f62cf84e1c9bfa7da4721e4aa2ce7
-vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc|c966350ee67d3a7c73ca7184e3725264025d16f5
-vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|9e28e0d4e1a969a8a9547aaa65246ab0158276bd
-vendor/lib64/libGPQTEEC_vendor.so|c5ad2383eed9c48d7faf1e69582878f51ec7f2f7
-vendor/lib64/libGPTEE_vendor.so|92c0215dbd3271e597d536c259df44aac716a402
-vendor/lib64/libQTEEConnector_vendor.so|22c4dfe5813f6f923a30ad9470227a65a217ab4a
-vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so|4e08dcd830d319c1a56d108c037b1f76eb5060d4
-
 # Trusted User Interface
 vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti
 vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc
