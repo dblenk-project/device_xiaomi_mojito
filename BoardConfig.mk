@@ -125,8 +125,7 @@ BOARD_KERNEL_CMDLINE += swiotlb=1
 BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x237
 
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CONFIG := mojito_defconfig
-TARGET_KERNEL_HEADERS := $(TARGET_KERNEL_SOURCE)
+TARGET_KERNEL_CONFIG := vendor/mojito_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/mojito
 
 # Media
