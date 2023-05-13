@@ -46,6 +46,7 @@ ro.media.recorder-max-base-layer-fps=60
 mmp.enable.3g2=true
 persist.mm.enable.prefetch=true
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+qcom.hw.aac.encoder=true
 
 # Netflix
 ro.netflix.channel=497730f0-ad4b-11e7-95a4-c7ad113ce187
