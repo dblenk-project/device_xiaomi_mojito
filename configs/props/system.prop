@@ -33,6 +33,7 @@ ro.lmk.psi_complete_stall_ms=70
 ro.lmk.swap_free_low_percentage=20
 
 # Media
+av.offload.enable=true
 media.aac_51_output_enabled=true
 media.stagefright.enable-aac=true
 media.stagefright.enable-fma2dp=true
