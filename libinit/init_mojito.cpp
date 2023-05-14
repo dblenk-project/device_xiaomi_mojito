@@ -1,8 +1,9 @@
 /*
    Copyright (c) 2015, The Linux Foundation. All rights reserved.
-   Copyright (C) 2016 The CyanogenMod Project.
-   Copyright (C) 2019-2020 The LineageOS Project.
-   Copyright (C) 2021 Paranoid Android.
+             (C) 2016 The CyanogenMod Project.
+             (C) 2019-2020 The LineageOS Project.
+             (C) 2022 Paranoid Android.
+             (C) 2022 The PixelExperience Project.
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -29,98 +30,77 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <stdlib.h>
+#include <vector>
+
+#include <android-base/logging.h>
+#include <android-base/properties.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 #include <sys/sysinfo.h>
 
-#include <android-base/properties.h>
-#include "property_service.h"
-#include "vendor_init.h"
-
 using android::base::GetProperty;
-using std::string;
 
-void property_override(string prop, string value)
-{
-    auto pi = (prop_info*) __system_property_find(prop.c_str());
+void property_override(char const prop[], char const value[], bool add = true) {
+    prop_info* pi;
 
-    if (pi != nullptr)
-        __system_property_update(pi, value.c_str(), value.size());
-    else
-        __system_property_add(prop.c_str(), prop.size(), value.c_str(), value.size());
+    pi = (prop_info*)__system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else if (add)
+        __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
-void vendor_load_properties()
-{
-    string device, model;
-
-    string hwname = GetProperty("ro.boot.hwname", "");
-
-    if (hwname == "sunny") {
-        device = "sunny";
-        model = "Redmi Note 10";
-    } else {
-        device = "mojito";
-        model = "Redmi Note 10";
-    }
-
-    // Override all partitions' props
-    string prop_partitions[] = { "", "bootimage.", "odm.", "product.", "system.", "system_ext.", "vendor." };
-    for (const string &prop : prop_partitions) {
-        property_override(string("ro.product.") + prop + string("board"), device);
-        property_override(string("ro.product.") + prop + string("device"), device);
-        property_override(string("ro.product.") + prop + string("name"), device);
-        property_override(string("ro.product.") + prop + string("model"), model);
-        property_override(string("ro.") + prop + string("build.product"), device);
-    }
-
-    // Set hardware revision
-    property_override("ro.boot.hardware.revision", GetProperty("ro.boot.hwversion", "").c_str());
-
-    // Set hardware SKU prop
-    property_override("ro.boot.product.hardware.sku", device);
-
-    // Set USB product prop
-    property_override("vendor.usb.product_string", model);
-
-    // Set dalvik heap configuration
-    string heapstartsize, heapgrowthlimit, heapsize, heapminfree,
-			heapmaxfree, heaptargetutilization;
-
+void load_dalvikvm_props() {
     struct sysinfo sys;
     sysinfo(&sys);
 
     if (sys.totalram > 5072ull * 1024 * 1024) {
         // from - phone-xhdpi-6144-dalvik-heap.mk
-        heapstartsize = "16m";
-        heapgrowthlimit = "256m";
-        heapsize = "512m";
-        heaptargetutilization = "0.5";
-        heapminfree = "8m";
-        heapmaxfree = "32m";
+        property_override("dalvik.vm.heapstartsize", "16m");
+        property_override("dalvik.vm.heapgrowthlimit", "256m");
+        property_override("dalvik.vm.heaptargetutilization", "0.5");
+        property_override("dalvik.vm.heapmaxfree", "32m");
     } else if (sys.totalram > 3072ull * 1024 * 1024) {
         // from - phone-xhdpi-4096-dalvik-heap.mk
-        heapstartsize = "8m";
-        heapgrowthlimit = "192m";
-        heapsize = "512m";
-        heaptargetutilization = "0.6";
-        heapminfree = "8m";
-        heapmaxfree = "16m";
+        property_override("dalvik.vm.heapstartsize", "8m");
+        property_override("dalvik.vm.heapgrowthlimit", "192m");
+        property_override("dalvik.vm.heaptargetutilization", "0.6");
+        property_override("dalvik.vm.heapmaxfree", "16m");
     }
 
-    property_override("dalvik.vm.heapstartsize", heapstartsize);
-    property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    property_override("dalvik.vm.heapsize", heapsize);
-    property_override("dalvik.vm.heaptargetutilization", heaptargetutilization);
-    property_override("dalvik.vm.heapminfree", heapminfree);
-    property_override("dalvik.vm.heapmaxfree", heapmaxfree);
-
-#ifdef __ANDROID_RECOVERY__
-    string buildtype = GetProperty("ro.build.type", "userdebug");
-    if (buildtype != "user") {
-        property_override("ro.debuggable", "1");
-        property_override("ro.adb.secure.recovery", "0");
-    }
-#endif
+    property_override("dalvik.vm.heapsize", "512m");
+    property_override("dalvik.vm.heapminfree", "8m");
 }
+
+void load_vendor_props() {
+    std::string hwname = GetProperty("ro.boot.hwname", "");
+    if (hwname.find("sunny") != std::string::npos) {
+        property_override("ro.product.device", "sunny");
+        property_override("ro.product.name", "sunny");
+        property_override("ro.build.fingerprint", "Redmi/sunny_global/sunny:12/RKQ1.210614.002/V14.0.2.0.SKGMIXM:user/release-keys");
+        property_override("ro.vendor.build.fingerprint", "Redmi/sunny_global/sunny:12/RKQ1.210614.002/V14.0.2.0.SKGMIXM:user/release-keys");
+        property_override("ro.bootimage.build.fingerprint", "Redmi/sunny_global/sunny:12/RKQ1.210614.002/V14.0.2.0.SKGMIXM:user/release-keys");
+        property_override("ro.build.description", "sunny_global-user 12 SKQ1.210908.001 V14.0.2.0.SKGMIXM release-keys");
+    } else {
+        property_override("ro.product.device", "mojito");
+        property_override("ro.product.name", "mojito");
+        property_override("ro.build.fingerprint", "Redmi/mojito/mojito:12/RKQ1.210614.002/V14.0.2.0.SKGMIXM:user/release-keys");
+        property_override("ro.vendor.build.fingerprint", "Redmi/mojito/mojito:12/RKQ1.210614.002/V14.0.2.0.SKGMIXM:user/release-keys");
+        property_override("ro.bootimage.build.fingerprint", "Redmi/mojito/mojito:12/RKQ1.210614.002/V14.0.2.0.SKGMIXM:user/release-keys");
+        property_override("ro.build.description", "mojito-user 12 SKQ1.210908.001 V14.0.2.0.SKGMIXM release-keys");
+    }
+
+    property_override("bluetooth.device.default_name", "Redmi Note 10");
+    property_override("ro.product.brand", "Redmi");
+    property_override("ro.product.manufacturer", "Xiaomi");
+    property_override("ro.product.model", "Redmi Note 10");
+    property_override("vendor.usb.product_string", "Redmi Note 10");
+}
+
+void vendor_load_properties() {
+    if (access("/system/bin/recovery", F_OK) != 0) {
+        load_vendor_props();
+    }
+    load_dalvikvm_props();
+}
+
