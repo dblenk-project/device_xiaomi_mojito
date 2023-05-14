@@ -198,6 +198,9 @@ debug.stagefright.ccodec=1
 debug.stagefright.omx_default_rank=0
 debug.stagefright.omx_default_rank.sw-audio=1
 
+# Media Codec
+vendor.mm.enable.qcom_parser=67108863
+
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.perf-hal.ver=2.2
