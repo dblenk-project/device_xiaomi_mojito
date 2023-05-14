@@ -87,6 +87,9 @@ TARGET_USES_DISPLAY_RENDER_INTENTS := true
 TARGET_USES_DRM_PP := true
 TARGET_USES_HWC2 := true
 
+# DT2W
+TARGET_TAP_TO_WAKE_NODE := "/sys/touchpanel/double_tap"
+
 # DTB
 BOARD_BOOT_HEADER_VERSION := 3
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
@@ -173,10 +176,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Platform
 TARGET_BOARD_PLATFORM := sm6150
-
-# Power
-TARGET_TAP_TO_WAKE_NODE := "/sys/touchpanel/double_tap"
-TARGET_POWERHAL_BOOST_EXT := $(DEVICE_PATH)/power/boost-ext.cpp
 
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/configs/props/odm.prop
