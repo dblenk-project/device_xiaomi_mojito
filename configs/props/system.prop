@@ -24,6 +24,7 @@ persist.wm.enable_remote_keyguard_animation=0
 
 # Display
 debug.sf.enable_hwc_vds=1
+debug.sf.latch_unsignaled=1
 
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
