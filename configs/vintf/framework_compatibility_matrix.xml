@@ -650,7 +650,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.memory.pasrmanager</name>
-        <version>1.0-1</version>
+        <version>1.0</version>
         <interface>
             <name>IPasrManager</name>
             <instance>pasrhal</instance>

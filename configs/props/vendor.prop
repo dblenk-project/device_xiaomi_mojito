@@ -204,10 +204,6 @@ vendor.mm.enable.qcom_parser=67108863
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.perf-hal.ver=2.2
-ro.vendor.perf.scroll_opt=true
-ro.vendor.qspm.enable=true
-vendor.pasr.activemode.enabled=true
-vendor.power.pasr.enabled=true
 
 # Netflix
 vendor.netflix.bsp_rev=Q6150-17263-1
