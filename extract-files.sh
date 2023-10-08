@@ -60,6 +60,9 @@ function blob_fixup() {
         vendor/lib64/camera/components/com.qti.node.watermark.so)
             grep -q "libpiex_shim.so" "${2}" || ${PATCHELF} --add-needed "libpiex_shim.so" "${2}"
             ;;
+        vendor/lib64/mediadrm/libwvdrmengine.so | vendor/lib64/libwvhidl.so)
+            "${PATCHELF}"  --replace-needed "libprotobuf-cpp-lite-3.9.1.so" "libprotobuf-cpp-full-3.9.1.so" "${2}"
+            ;;
     esac
 }
 
