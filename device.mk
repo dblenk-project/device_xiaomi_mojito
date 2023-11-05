@@ -388,10 +388,6 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.2.vendor \
     android.hardware.power-service-qti
 
-# Preopted ODEX files (system_other)
-PRODUCT_PACKAGES += \
-    cppreopts.sh
-
 # QTI
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
