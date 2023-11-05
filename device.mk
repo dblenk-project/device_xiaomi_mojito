@@ -384,10 +384,6 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.2.vendor \
     android.hardware.power-service-qti
 
-# Preopted ODEX files (system_other)
-PRODUCT_PACKAGES += \
-    cppreopts.sh
-
 # Protobuf
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-3.9.1-vendorcompat \
