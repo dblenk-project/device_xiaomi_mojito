@@ -1,5 +1,7 @@
 allow system_app vendor_sysfs_battery_supply:dir { search };
-allow system_app vendor_sysfs_battery_supply:file { read open getattr };
+allow system_app vendor_sysfs_battery_supply:file { read };
+allow system_app vendor_sysfs_battery_supply:file { open };
+allow system_app vendor_sysfs_battery_supply:file { getattr };
 allow system_app proc_pagetypeinfo:file r_file_perms;
 allow system_app sysfs_thermal:file rw_file_perms;
 allow system_app sysfs_zram:dir r_dir_perms;
@@ -8,3 +10,10 @@ allow system_app sysfs_zram:file r_file_perms;
 r_dir_file(system_app, vendor_sysfs_battery_supply)
 
 get_prop(system_app, vendor_persist_camera_prop)
+
+# Battery Health
+allow system_app sysfs_battery_supply:dir { search };
+allow system_app sysfs_battery_supply:file { read open getattr };
+
+# Zygote
+allow system_app zygote:unix_stream_socket { getopt };

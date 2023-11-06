@@ -4,6 +4,8 @@ genfscon sysfs /kernel/boot_cdsp/boot                                           
 # Display
 genfscon sysfs /devices/platform/soc/2c00000.qcom,kgsl-3d0                                          u:object_r:sysfs_msm_subsys:s0
 genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/idle_state                               u:object_r:vendor_sysfs_graphics:s0
+genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/idle_encoder_mask                        u:object_r:vendor_sysfs_graphics:s0
+genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/idle_timeout_ms                          u:object_r:vendor_sysfs_graphics:s0
 genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-0/early_wakeup        u:object_r:sysfs_msm_subsys:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,cpu-cpu-llcc-bw                                       u:object_r:sysfs_msm_subsys:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,cpu-llcc-ddr-bw                                       u:object_r:sysfs_msm_subsys:s0
@@ -30,7 +32,7 @@ genfscon sysfs /devices/platform/soc/soc:maxim_ds28e16/power_supply/batt_verify 
 genfscon proc /last_kmsg                                                        u:object_r:proc_last_kmsg:s0
 
 # DT2W
-genfscon proc /tp_gesture                                                      u:object_r:proc_tp_gesture:s0
+genfscon sysfs /touchpanel                                                      u:object_r:sysfs_touchpanel:s0
 
 # LED
 genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm6150l@5:qcom,leds@d300/leds/flashlight/brightness               u:object_r:sysfs_leds:s0
@@ -50,6 +52,7 @@ genfscon sysfs /devices/platform/soc/88c000.i2c/i2c-2/2-0065/power_supply/bq2597
 genfscon sysfs /devices/platform/soc/88c000.i2c/i2c-2/2-0065/power_supply/bq2597x-standalone/wakeup8                                                             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/88c000.i2c/i2c-2/2-0065/power_supply/bq2597x-standalone/wakeup11                                                            u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/88e0000.qcom,msm-eud/wakeup                                                                                                 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/a600000.ssusb/wakeup                                                                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/a84000.i2c/i2c-1/1-0049/wakeup                                                                                              u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm6150@0:qcom,power-on@800/wakeup                                  u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-04/c440000.qcom,spmi:qcom,pm6150l@4:qcom,power-on@800/wakeup                                 u:object_r:sysfs_wakeup:s0
@@ -71,6 +74,10 @@ genfscon sysfs /devices/platform/soc/soc:fpc1020/wakeup/wakeup5                 
 genfscon sysfs /devices/platform/soc/soc:fpc1020/wakeup/wakeup7                                                                                                  u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:gpio_keys/wakeup                                                                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:maxim_ds28e16/power_supply/batt_verify/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,smp2p-cdsp/wakeup/wakeup                                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,smp2p-modem/wakeup/wakeup                                                                                          u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,smp2p_sleepstate/wakeup/wakeup                                                                                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,smp2p-adsp/wakeup/wakeup                                                                                           u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:maxim_ds28e16/power_supply/batt_verify/wakeup10                                                                         u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:maxim_ds28e16/power_supply/batt_verify/wakeup13                                                                         u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/diag/diag/wakeup                                                                                                                 u:object_r:sysfs_wakeup:s0
@@ -89,6 +96,7 @@ genfscon sysfs /devices/virtual/misc/msm_mp3/power/wakeup                       
 genfscon sysfs /devices/virtual/misc/msm_qcelp/power/wakeup                                                                                                      u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_wma/power/wakeup                                                                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_wmapro/power/wakeup                                                                                                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm6150@0:qcom,pm6150_rtc/wakeup/wakeup10                           u:object_r:sysfs_wakeup:s0
 
 # Vibrator
 genfscon sysfs /devices/platform/soc/soc:pwm_vibrator/leds/vibrator                  u:object_r:sysfs_leds:s0

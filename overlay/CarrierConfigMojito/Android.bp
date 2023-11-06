@@ -2,6 +2,5 @@ runtime_resource_overlay {
     name: "CarrierConfigMojito",
     theme: "CarrierConfigMojito",
     sdk_version: "current",
-    product_specific: true,
-    aaptflags: ["--keep-raw-values"],
+    vendor: true,
 }

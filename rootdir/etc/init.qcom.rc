@@ -30,10 +30,6 @@ import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
 
 on early-init
-    mount debugfs debugfs /sys/kernel/debug
-    chmod 0755 /sys/kernel/debug
-    chown system system /sys/kernel/debug
-
     # Change ownership of hw_recovery related nodes
     chown system graphics /sys/kernel/debug/dri/0/debug/dump
     chown system graphics /sys/kernel/debug/dri/0/debug/recovery_reg
@@ -49,7 +45,11 @@ on early-init
     chmod 0666 /sys/kernel/debug/sync/sw_sync
 
     # Disable UFS clock scaling
-    write /sys/bus/platform/devices/${ro.boot.bootdevice}/clkscale_enable 0
+    write /sys/bus/platform/devices/1d84000.ufshc/clkscale_enable 0
+
+   # Workarround for cache
+    rm /data/resource-cache
+    rm /data/system/package_cache
 
 on init
     # Create cgroup mount point for memory
@@ -76,6 +76,8 @@ on late-init
     start vendor.configstore-hal
     start vendor.qti.hardware.display.allocator
 
+    write /sys/class/graphics/fb0/idle_time 100
+
 on early-boot
     # Set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -85,6 +87,7 @@ on early-boot
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/devices/virtual/npu/msm_npu/boot 1
     write /sys/devices/virtual/cvp/cvp/boot 1
+    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
 
     chown system system /mnt/vendor/persist/data/pfm/licenses
     chmod 0775 /mnt/vendor/persist/data/pfm/licenses
@@ -104,12 +107,6 @@ on early-boot
 
     chown system graphics /sys/devices/virtual/hdcp/msm_hdcp/min_level_change
     chmod 0660 /sys/devices/virtual/hdcp/msm_hdcp/min_level_change
-
-    # Allow system_graphics group to access pmic secure_mode node
-    chown system graphics /sys/class/lcd_bias/secure_mode
-    chmod 0660 /sys/class/lcd_bias/secure_mode
-    chown system graphics /sys/class/leds/wled/secure_mode
-    chmod 0660 /sys/class/leds/wled/secure_mode
 
     # SSR setup
     write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
@@ -146,10 +143,6 @@ on boot
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
-    # Set the console loglevel to < KERN_INFO
-    # Set the default message loglevel to KERN_INFO
-    write /proc/sys/kernel/printk "4 6 1 7"
-
     # Bond0 used by FST Manager
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
 
@@ -174,6 +167,11 @@ on boot
     # Create directory used for display
     mkdir /mnt/vendor/persist/display 0770 system graphics
 
+    chown root graphics /sys/module/msm_drm/parameters/dsi_display0
+    chmod 0640 /sys/module/msm_drm/parameters/dsi_display0
+    chown root graphics /sys/module/msm_drm/parameters/dsi_display1
+    chmod 0640 /sys/module/msm_drm/parameters/dsi_display1
+
     # Create vpp directory
     mkdir /mnt/vendor/persist/vpp 0770 media media
 
@@ -187,6 +185,11 @@ on boot
     enable vendor.dataadpl
 
 on post-fs-data
+
+    # Access permission for input_suspend
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0666 /sys/class/power_supply/battery/input_suspend
+
     # Create directory used by display clients
     mkdir /data/vendor/display 0770 system graphics
 
@@ -213,7 +216,7 @@ on post-fs-data
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
 
     # Create the directories used by the Wireless subsystem
-    mkdir /data/vendor/wifi 0770 wifi wifi
+    mkdir /data/vendor/wifi 0771 wifi wifi
     mkdir /data/vendor/wifi/sockets 0770 wifi wifi
     mkdir /data/vendor/wifi/hostapd 0770 wifi wifi
     mkdir /data/vendor/wifi/hostapd/ctrl 0770 wifi wifi
@@ -221,6 +224,7 @@ on post-fs-data
     mkdir /data/vendor/wifi/wigig_hostapd 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
+    mkdir /data/vendor/bluedroid 0771 bluetooth bluetooth
 
     # Create the directories used by CnE subsystem
     mkdir /data/vendor/connectivity 0771 radio radio
@@ -280,9 +284,12 @@ on post-fs-data
 
 on property:sys.boot_completed=1
     #Enable UFS clock scaling back
-    write /sys/bus/platform/devices/${ro.boot.bootdevice}/clkscale_enable 1
+    write /sys/bus/platform/devices/1d84000.ufshc/clkscale_enable 1
 
     chown media audio /sys/kernel/wdsp0/boot
+
+    # This initializes vendor.qti.hardware.perf service
+    setprop vendor.post_boot.parsed 1
 
     start vendor.qcom-post-boot
 
@@ -291,26 +298,20 @@ service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
     user vendor_qrtr
     group vendor_qrtr
     capabilities NET_BIND_SERVICE
-    writepid /dev/cpuset/system-background/tasks
-
-service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
-    class core
-    user root
-    oneshot
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
     class late_start
     user system
     group system inet net_admin wifi
     capabilities NET_ADMIN
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 service vendor.loc_launcher /vendor/bin/loc_launcher
     class late_start
     user gps
     group gps
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 service vendor.qcom-sh /vendor/bin/init.qcom.sh
     class late_start
@@ -344,7 +345,7 @@ service vendor.power_off_alarm /vendor/bin/power_off_alarm
     class core
     group system
     oneshot
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     override
@@ -352,9 +353,9 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     user audioserver
     # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
     group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct oem_2901 wakelock
-    capabilities BLOCK_SUSPEND
+    capabilities BLOCK_SUSPEND SYS_NICE
     ioprio rt 4
-    writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
+    task_profiles ProcessCapacityHigh HighPerformance
     socket audio_hw_socket seqpacket 0666 system system
     onrestart restart audioserver
 
@@ -363,3 +364,27 @@ service vendor.power /vendor/bin/hw/android.hardware.power-service-qti
     user system
     group system input
     override
+
+on property:sys.boot_completed=1
+    # Restrict permissions to socket file 
+    # to hide Magisk & co.
+    chmod 440 /proc/net/unix
+
+on property:init.svc.cnss_diag=running
+    stop cnss_diag
+
+on property:init.svc.tcpdump=running
+    stop tcpdump
+
+on property:init.svc.vendor.ipacm-diag=running
+    stop vendor.ipacm-diag
+
+service vendor.hwcomposer-2-4 /vendor/bin/hw/android.hardware.graphics.composer@2.4-service
+    override
+    class hal animation
+    user system
+    group graphics drmrpc
+    capabilities SYS_NICE
+    onrestart restart surfaceflinger
+    socket pps stream 0660 system system
+    task_profiles ServiceCapacityLow

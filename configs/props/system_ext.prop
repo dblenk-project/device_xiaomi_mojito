@@ -1,0 +1,66 @@
+# Audio
+persist.audio.fluence.speaker=true
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+ro.qc.sdk.audio.fluencetype=none
+ro.qc.sdk.audio.ssr=false
+tunnel.audio.encode=true
+use.voice.path.for.pcm.voip=true
+
+# Bluetooth
+bluetooth.hardware.power.idle_cur_ma=36
+bluetooth.hardware.power.operating_voltage_mv=3700
+bluetooth.hardware.power.rx_cur_ma=20
+bluetooth.hardware.power.tx_cur_ma=3
+bluetooth.profile.a2dp.source.enabled?=true
+bluetooth.profile.avrcp.target.enabled?=true
+bluetooth.profile.bas.client.enabled?=true
+bluetooth.profile.gatt.enabled?=true
+bluetooth.profile.hfp.ag.enabled?=true
+bluetooth.profile.hid.device.enabled?=true
+bluetooth.profile.hid.host.enabled?=true
+bluetooth.profile.map.server.enabled?=true
+bluetooth.profile.opp.enabled?=true
+bluetooth.profile.pan.nap.enabled?=true
+bluetooth.profile.pan.panu.enabled?=true
+bluetooth.profile.pbap.server.enabled?=true
+bluetooth.profile.sap.server.enabled?=true
+
+# Display
+dev.pm.dyn_samplingrate=1
+ro.display.type=oled
+
+# DPM
+persist.vendor.dpm.feature=11
+persist.vendor.dpm.nsrm.bkg.evt=3955
+persist.vendor.dpm.loglevel=0
+persist.vendor.dpmhalservice.enable=1
+
+# FUSE
+persist.fuse_sdcard=true
+
+# GPS 
+persist.sys.gps.fence=true
+persist.sys.gps.polaris=true
+
+# Media
+av.offload.enable=true
+qcom.hw.aac.encoder=true
+
+# Multi-gen LRU
+persist.device_config.mglru_native.lru_gen_config=all
+
+# Printk
+persist.vendor.console.silent.config=1
+
+# Telephony
+ro.telephony.handle_audio_direction_changes_between_call_state_changes=false
+ro.telephony.sim_slots.count=2
+telephony.active_modems.max_count=2
+
+# Time Service
+persist.timed.enable=true
+
+# WFD
+persist.debug.wfd.enable=1
+persist.sys.wfd.virtual=0

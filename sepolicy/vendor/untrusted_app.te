@@ -6,5 +6,7 @@ allow untrusted_app {
   proc_zoneinfo
 }:file { read };
 
+allow untrusted_app proc_zoneinfo:file r_file_perms;
+
 get_prop(untrusted_app, vendor_persist_camera_prop)
 get_prop(untrusted_app, virtual_ab_prop)

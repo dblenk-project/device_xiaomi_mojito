@@ -27,6 +27,10 @@
 #
 #
 
+on early-init
+    # Start audio adsp rpc daemon at early init stage
+    start vendor.audioadsprpcd_audiopd
+
 on init
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -36,13 +40,9 @@ on init
     write /sys/block/sda/queue/iostats 0
     write /sys/block/sda/queue/scheduler cfq
     write /sys/block/sda/queue/iosched/slice_idle 0
-    write /sys/block/sda/queue/read_ahead_kb 2048
     write /sys/block/sda/queue/nr_requests 256
-    write /sys/block/sde/queue/iostats 0
-    write /sys/block/sde/queue/scheduler cfq
-    write /sys/block/sde/queue/iosched/slice_idle 0
-    write /sys/block/sde/queue/read_ahead_kb 2048
-    write /sys/block/sde/queue/nr_requests 256
+    write /dev/sys/fs/by-name/userdata/data_io_flag 56
+    write /dev/sys/fs/by-name/userdata/node_io_flag 56
 
     # ZRAM setup
     write /sys/block/zram0/comp_algorithm lz4
@@ -57,6 +57,12 @@ on init
     chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
     chmod 0660 /dev/cpuset/camera-daemon/tasks
 
+    # Thermal Profiles permissions
+    chmod 0664 /sys/class/thermal/thermal_message/sconfig
+    chown system system /sys/class/thermal/thermal_message/sconfig
+    chmod 0666 /sys/class/thermal/thermal_message/temp_state
+    chown system system /sys/class/thermal/thermal_message/temp_stat
+
 on fs
     mount_all --early /vendor/etc/fstab.qcom
 
@@ -66,8 +72,6 @@ on fs
     mkdir /mnt/vendor/persist/camera 0777 root root
 
 on late-fs
-    wait_for_prop hwservicemanager.ready true
-    exec_start wait_for_keymaster
     mount_all --late /vendor/etc/fstab.qcom
 
 on post-fs-data
@@ -83,7 +87,11 @@ on boot
     start rfs_access
     start mi_thermald
 
-    chown system system /sys/class/thermal/thermal_message/sconfig
+    # default country code
+    setprop ro.boot.wificountrycode 00
+
+    chown system system /sys/class/thermal/thermal_message/balance_mode
+    chown system system /sys/class/thermal/thermal_message/charger_temp
 
     chown system system /dev/cpuset/cgroup.procs
     chown system system /dev/cpuset/foreground/cgroup.procs
@@ -103,33 +111,48 @@ on boot
     chmod 0666 /dev/stune/top-app/cgroup.procs
 
     # DT2W
-    chown system system /proc/tp_gesture
-    chmod 0644 /proc/tp_gesture
+    chown system system /sys/touchpanel/double_tap
+    chmod 0660 /sys/touchpanel/double_tap
+
+ # Disable serial console
+    stop console
 
 on property:sys.boot_completed=1
     # Runtime fs tuning
-    write /sys/block/sda/queue/read_ahead_kb 128
     write /sys/block/sda/queue/nr_requests 128
-    write /sys/block/sda/queue/iostats 1
-    write /sys/block/sde/queue/read_ahead_kb 128
-    write /sys/block/sde/queue/nr_requests 128
-    write /sys/block/sde/queue/iostats 1
+    write /dev/sys/fs/by-name/userdata/data_io_flag 8
+    write /dev/sys/fs/by-name/userdata/node_io_flag 8
+
+    # Setup runtime blkio
+    # value for group_idle is us
+    write /dev/blkio/blkio.weight 1000
+    write /dev/blkio/background/blkio.weight 200
+    write /dev/blkio/blkio.group_idle 2000
+    write /dev/blkio/background/blkio.group_idle 0
+
+    # Back to default VM settings
+    write /proc/sys/vm/dirty_expire_centisecs 3000
+    write /proc/sys/vm/dirty_background_ratio 10
 
     # Setup runtime cpusets
     write /dev/cpuset/top-app/cpus 0-7
-    write /dev/cpuset/foreground/cpus 0-7
-    write /dev/cpuset/background/cpus 0-7
-    write /dev/cpuset/system-background/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0-3,5-6
+    write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/restricted/cpus 0-3
+
+    # Disable unnecessary printk logging
+    write /proc/sys/kernel/printk_devkmsg off
+    
+    # Setup scheduler tunables
+    write /proc/sys/kernel/sched_child_runs_first 1
 
     # Elliptic
     chmod 0666 /dev/elliptic0
     chmod 0666 /dev/elliptic1
 
-    chmod 0664 /sys/class/power_supply/battery/input_suspend
     chmod 0664 /sys/class/power_supply/battery/battery_charging_enabled
     chmod 0664 /sys/class/power_supply/usb/typec_cc_orientation
-    chown system system /sys/class/power_supply/battery/input_suspend
     chown system system /sys/class/power_supply/battery/battery_charging_enabled
     chown system system /sys/class/power_supply/usb/typec_cc_orientation
 
@@ -141,31 +164,38 @@ on property:sys.boot_completed=1
     setprop vendor.usb.qdss.inst.name "qdss"
     setprop sys.usb.configfs 1
 
+    # Report max frequency to unity tasks
+    write /proc/sys/kernel/sched_lib_name "com.miHoYo.,libunity.so,libfb.so"
+    write /proc/sys/kernel/sched_lib_mask_force 255
+
     # Enable ZRAM on boot_complete
 on property:sys.boot_completed=1
-    rm /data/unencrypted/zram_swap
-    swapon_all /vendor/etc/fstab.qcom
+        swapon_all /vendor/etc/fstab.qcom
     write /proc/sys/vm/swappiness 100
+
+    # Enable idle state listener
+    write /sys/class/drm/card0/device/idle_encoder_mask 1
+    write /sys/class/drm/card0/device/idle_timeout_ms 100
 
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
     user system
     group system
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 service vendor.per_mgr /vendor/bin/pm-service
     class core
     user system
     group system
     ioprio rt 4
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 service vendor.per_proxy /vendor/bin/pm-proxy
     class core
     user system
     group system
     disabled
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 on property:init.svc.vendor.per_mgr=running
     start vendor.per_proxy
@@ -176,10 +206,10 @@ on property:sys.shutdown.requested=*
 on charger
     setprop sys.usb.controller a600000.dwc3
     setprop sys.usb.configfs 1
-    wait /dev/block/platform/soc/${ro.boot.bootdevice}/by-name/system
-    mount ext4 /dev/block/platform/soc/${ro.boot.bootdevice}/by-name/system / ro barrier=1
+    wait /dev/block/platform/soc/1da4000.ufshc/by-name/system
+    mount ext4 /dev/block/platform/soc/1da4000.ufshc/by-name/system / ro barrier=1
 
-    wait /dev/block/platform/soc/${ro.boot.bootdevice}/by-name/persist
+    wait /dev/block/platform/soc/1da4000.ufshc/by-name/persist
     mount ext4 /dev/block/bootdevice/by-name/persist /mnt/vendor/persist nosuid nodev barrier=1
 
     start mi_thermald
@@ -194,24 +224,22 @@ service mi_thermald /system/vendor/bin/mi_thermald
     group system
     seclabel u:r:mi_thermald:s0
 
-service vendor.thermal-engine /vendor/bin/thermal-engine
-    class main
-    user root
-    socket thermal-send-client stream 0666 system system
-    socket thermal-recv-client stream 0660 system system
-    socket thermal-recv-passive-client stream 0666 system system
-    socket thermal-send-rule stream 0660 system system
-    group root
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
     class main
     user root
     group system wakelock
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 service vendor.nv_mac /vendor/bin/nv_mac
     class main
     user system
-    group system inet net_admin wifi net_raw
+    group system inet net_admin wifi net_raw oem_2901
     oneshot
+
+on property:ro.boot.hwversion=*
+    setprop vendor.boot.hwversion ${ro.boot.hwversion}
+
+# Enable suspend to RAM
+    write /sys/power/mem_sleep "deep"

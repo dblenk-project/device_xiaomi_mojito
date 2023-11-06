@@ -1,3 +1,5 @@
+typeattribute tee data_between_core_and_vendor_violators;
+
 allow tee fingerprint_data_file:dir create_dir_perms;
 allow tee {
   fingerprint_data_file
@@ -5,3 +7,4 @@ allow tee {
 }:file create_file_perms;
 
 allow tee mnt_vendor_file:dir rw_dir_perms;
+allow tee tmpfs:dir r_dir_perms;
