@@ -75,9 +75,3 @@ wifi.interface=wlan0
 ro.zram.mark_idle_delay_mins=60
 ro.zram.first_wb_delay_mins=1440
 ro.zram.periodic_wb_delay_hours=24
-
-# One handed mode
-ro.support_one_handed_mode=true
-
-# Storage.xml moment
-persist.sys.binary_xml=false

@@ -103,8 +103,8 @@ on boot
     chmod 0666 /dev/stune/top-app/cgroup.procs
 
     # DT2W
-    chown system system /sys/touchpanel/double_tap
-    chmod 0660 /sys/touchpanel/double_tap
+    chown system system /proc/tp_gesture
+    chmod 0644 /proc/tp_gesture
 
 on property:sys.boot_completed=1
     # Runtime fs tuning
