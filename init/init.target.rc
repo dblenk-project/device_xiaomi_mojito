@@ -32,9 +32,10 @@ on early-init
     setprop ro.soc.model ${ro.vendor.qti.soc_model}
 
 on init
-    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
+    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
     # Boot time fs tuning
     write /sys/block/sda/queue/iostats 0
@@ -66,6 +67,8 @@ on fs
     restorecon_recursive /mnt/vendor/persist
     mkdir /mnt/vendor/persist/data 0700 system system
     mkdir /mnt/vendor/persist/audio 0755 system system
+    mkdir /mnt/vendor/persist/alarm 0770 system system
+    mkdir /mnt/vendor/persist/time 0770 system system
     mkdir /mnt/vendor/persist/camera 0777 root root
 
 on late-fs
