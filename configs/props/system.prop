@@ -6,9 +6,6 @@ camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera
 log.tag.CHIUSECASE=ERROR
 persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera
 
-# Charger
-ro.charger.enable_suspend=true
-
 # CNE
 persist.vendor.cne.feature=1
 
