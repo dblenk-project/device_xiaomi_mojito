@@ -704,7 +704,4 @@
          non-zero amplitudes, to bring the vibrator amplitude down to zero using this timing. -->
     <integer name="config_vibrationWaveformRampDownDuration">50</integer>
 
-    <!-- Boost Framework -->
-    <bool name="config_supportsBoostFramework">true</bool>
-
 </resources>
