@@ -240,14 +240,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.audiohalext</name>
-        <version>1.0</version>
-        <interface>
-            <name>IAudioHalExt</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.bluetooth_audio</name>
         <version>2.1</version>
         <interface>
@@ -293,14 +285,6 @@
         <version>1.0</version>
         <interface>
             <name>ICapabilityConfigStore</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.cryptfshw</name>
-        <version>1.0</version>
-        <interface>
-            <name>ICryptfsHw</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -421,18 +405,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.qteeconnector</name>
-        <version>1.0</version>
-        <interface>
-            <name>IAppConnector</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IGPAppConnector</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.radio.am</name>
         <version>1.0</version>
         <interface>
@@ -522,14 +494,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.servicetracker</name>
-        <version>1.0-2</version>
-        <interface>
-            <name>IServicetracker</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.slmadapter</name>
         <version>1.0</version>
         <interface>
@@ -543,32 +507,6 @@
         <interface>
             <name>ISoter</name>
             <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.systemhelper</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISystemEvent</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>ISystemResource</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.trustedui</name>
-        <version>1.0</version>
-        <interface>
-            <name>ITrustedInput</name>
-            <instance>default</instance>
-            <instance>qtee-vm</instance>
-        </interface>
-        <interface>
-            <name>ITrustedUI</name>
-            <instance>default</instance>
-            <instance>qtee-vm</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -646,30 +584,6 @@
         <interface>
             <name>IRTPService</name>
             <instance>imsrtpservice</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.memory.pasrmanager</name>
-        <version>1.0-1</version>
-        <interface>
-            <name>IPasrManager</name>
-            <instance>pasrhal</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.power.pasrmanager</name>
-        <version>1.0</version>
-        <interface>
-            <name>IPasrManager</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.qspmhal</name>
-        <version>1.0</version>
-        <interface>
-            <name>IQspmhal</name>
-            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
