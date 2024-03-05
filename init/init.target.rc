@@ -109,15 +109,6 @@ on boot
     chown system system /sys/touchpanel/double_tap
     chmod 0660 /sys/touchpanel/double_tap
 
-on property:sys.boot_completed=1
-    # Runtime fs tuning
-    write /sys/block/sda/queue/read_ahead_kb 128
-    write /sys/block/sda/queue/nr_requests 128
-    write /sys/block/sda/queue/iostats 1
-    write /sys/block/sde/queue/read_ahead_kb 128
-    write /sys/block/sde/queue/nr_requests 128
-    write /sys/block/sde/queue/iostats 1
-
     # Elliptic
     chmod 0666 /dev/elliptic0
     chmod 0666 /dev/elliptic1
@@ -137,12 +128,23 @@ on property:sys.boot_completed=1
     setprop vendor.usb.qdss.inst.name "qdss"
     setprop sys.usb.configfs 1
 
-    # Enable ZRAM on boot_complete
 on property:sys.boot_completed=1
     rm /data/unencrypted/zram_swap
-    swapon_all /vendor/etc/fstab.zram
+    # Set allocstall_threshold to 0
+    # Set swappiness to 100
     write /sys/module/vmpressure/parameters/allocstall_threshold 0
     write /proc/sys/vm/swappiness 100
+
+    # Enable ZRAM on boot_complete
+    swapon_all /vendor/etc/fstab.zram
+
+    # Runtime fs tuning
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/nr_requests 128
+    write /sys/block/sda/queue/iostats 1
+    write /sys/block/sde/queue/read_ahead_kb 128
+    write /sys/block/sde/queue/nr_requests 128
+    write /sys/block/sde/queue/iostats 1
 
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
